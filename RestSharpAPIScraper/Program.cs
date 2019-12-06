@@ -10,6 +10,11 @@ namespace RestSharpAPIScraper
     {
         static void Main(string[] args)
         {
+            var scraper = new Scraper();
+            scraper.Start();
+
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
         }
     }
 }
