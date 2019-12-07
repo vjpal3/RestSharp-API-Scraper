@@ -23,8 +23,10 @@ namespace RestSharpAPIScraper.Services
         {
             var request = new RestRequest("v3/stock/actives", Method.GET);
             var response = client.Execute<RootObject>(request);
+
             var root = JsonConvert.DeserializeObject<RootObject>(response.Content);
             var mostActiveStocks = root.MostActiveStocks;
+
             return mostActiveStocks;
         }
     }
