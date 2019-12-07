@@ -8,6 +8,7 @@ namespace RestSharpAPIScraper
     public class Scraper
     {
         private List<StockData> mostActiveStocks;
+
         public void Start()
         {
             string baseUrl = "https://financialmodelingprep.com/api/";
@@ -15,12 +16,16 @@ namespace RestSharpAPIScraper
 
             mostActiveStocks = caller.GetStockData();
             Display();
-            
+            SaveData();
+        }
+
+        private void SaveData()
+        {
+            DbWriter.InsertStocksData(mostActiveStocks);
         }
 
         private void Display()
         {
-            Console.WriteLine("Count: " + mostActiveStocks.Count);
             foreach (var stockdata in mostActiveStocks)
             {
                 Console.Write(stockdata.CompanyName + "\t");

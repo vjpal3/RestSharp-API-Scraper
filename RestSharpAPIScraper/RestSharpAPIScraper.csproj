@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\DbWriter.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\RootObject.cs" />
     <Compile Include="Models\StockData.cs" />
