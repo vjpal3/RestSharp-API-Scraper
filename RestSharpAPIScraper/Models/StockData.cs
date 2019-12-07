@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -24,7 +25,16 @@ namespace RestSharpAPIScraper.Models
         [JsonProperty("changes")]
         public decimal? Change { get; set; }
 
+        [JsonIgnore]
+        public decimal? PercentChange { get; set; }
+
         [JsonProperty("changesPercentage")] 
-        public string PercentChange { get; set; }
+        private string PercentChangeString {
+            set
+            {
+                value = Regex.Replace(value, "[^0-9.-]", "");
+                PercentChange = decimal.TryParse(value, out decimal result) ? result : (decimal?) null;
+            }
+        }
     }
 }
